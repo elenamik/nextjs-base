@@ -23,7 +23,7 @@ export default function Home() {
         />
       </Head>
       <main className="">
-        <h1>3 Cards</h1>
+        <h1 className="px-10 pt-10 text-left">3 Cards</h1>
         <CardGrid data={cardData3} />
       </main>
     </>
