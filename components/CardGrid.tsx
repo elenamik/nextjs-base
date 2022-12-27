@@ -6,7 +6,7 @@ const CardGrid: React.FC<{ data: CardData[] }> = ({ data }) => {
   return (
     <div className="m-10 grid w-fit items-center border-4 pb-4">
       <div className="h-2 bg-bright-blue-1"></div>
-      <h1 className="text px-8 pt-8 text-xl font-bold italic">HEADER</h1>
+      <h1 className="px-8 pt-8 text-xl font-bold italic">HEADER</h1>
       <div className="flex">
         {data.map((card: CardData) => (
           <Card key={card.subtitle} data={card} />
