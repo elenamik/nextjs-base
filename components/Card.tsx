@@ -1,7 +1,7 @@
 import React from "react";
 import { CardData } from "types/Cards";
 
-type CardVariant = "small" | "medium" | "large";
+export type CardVariant = "small" | "medium" | "large";
 
 const Card: React.FC<{ data: CardData; variant?: CardVariant }> = ({
   data,
