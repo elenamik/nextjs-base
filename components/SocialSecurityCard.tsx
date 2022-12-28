@@ -36,12 +36,15 @@ const SocialSecurityCard: React.FC<{ userId: number }> = ({ userId }) => {
     return <div className="my-2 h-[1px] bg-grey-1"></div>;
   };
 
-  if (error || (!isLoading && !data?.user_info?.full_name)) {
+  const hasData =
+    data?.user_info?.full_name && data?.assumptions?.retirement_age;
+
+  if (error || (!isLoading && !hasData)) {
     console.log("API ERROR", error);
     return (
       <div className="flex w-[420px] flex-col justify-center p-4 pb-6">
         <h1 className="text-sxl text-center font-bold drop-shadow-lg ">
-          Could not load API
+          Could not load data
         </h1>
       </div>
     );
@@ -53,6 +56,8 @@ const SocialSecurityCard: React.FC<{ userId: number }> = ({ userId }) => {
       </div>
     );
   }
+
+  const retirementAge = data!.assumptions.retirement_age;
   return (
     <div className="flex w-[420px] flex-col justify-center p-4 pb-6">
       <h1 className="text-sxl text-center font-bold drop-shadow-lg ">
@@ -74,7 +79,7 @@ const SocialSecurityCard: React.FC<{ userId: number }> = ({ userId }) => {
       <div className="flex justify-around">
         <NumberSelector
           text="Your ideal retire age"
-          value="65"
+          value={retirementAge}
           canEdit={true}
         />
         <NumberSelector
@@ -84,7 +89,10 @@ const SocialSecurityCard: React.FC<{ userId: number }> = ({ userId }) => {
         />
       </div>
       <div className="flex justify-around">
-        <Button text="Use ideal 63" variant="secondary"></Button>
+        <Button
+          text={`Use ideal ${retirementAge}`}
+          variant="secondary"
+        ></Button>
         <Button text="Accept 70" variant="primary"></Button>
       </div>
     </div>

@@ -1,8 +1,5 @@
-import Head from "next/head";
 import CardGrid from "components/CardGrid";
 import { cardData3, cardData7, cardData9 } from "constants/mock/cards";
-import SocialSecurityCard from "components/SocialSecurityCard";
-import { useState } from "react";
 
 export default function Home() {
   // const [input, setInput] = useState(3);
@@ -41,5 +38,6 @@ export default function Home() {
 
       <h1 className="px-10 pt-10 text-left">9 Cards</h1>
       <CardGrid data={cardData9} />
+    </div>
   );
 }
