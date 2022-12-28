@@ -1,7 +1,7 @@
 import Head from "next/head";
 import CardGrid from "components/CardGrid";
 import { cardData3, cardData7, cardData9 } from "constants/mock/cards";
-import { useEffect, useState } from "react";
+import SocialSecurityCard from "components/SocialSecurityCard";
 
 export default function Home() {
   // const [input, setInput] = useState(3);
@@ -37,7 +37,7 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
-      <main className="flex flex-col justify-items-center">
+      <main className="flex flex-col justify-items-center pb-40">
         {/*<input*/}
         {/*  className="w-32"*/}
         {/*  type="number"*/}
@@ -55,6 +55,11 @@ export default function Home() {
 
         <h1 className="px-10 pt-10 text-left">9 Cards</h1>
         <CardGrid data={cardData9} />
+
+        <h1 className="px-10 pt-10 text-left">Social Security Card</h1>
+        <div className="mx-10 w-fit border-2">
+          <SocialSecurityCard />
+        </div>
       </main>
     </>
   );

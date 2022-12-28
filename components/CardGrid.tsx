@@ -1,6 +1,7 @@
 import React from "react";
 import { CardData } from "types/Cards";
-import Card, { CardVariant } from "components/Card";
+import Card, { CardVariant } from "components/common/Card";
+import Button from "components/common/Button";
 
 const CardGrid: React.FC<{ data: CardData[] }> = ({ data }) => {
   const chooseVariant = (arrayLength: number, index: number): CardVariant => {
@@ -28,10 +29,7 @@ const CardGrid: React.FC<{ data: CardData[] }> = ({ data }) => {
           ))}
         </div>
       </div>
-
-      <button className="w-[364px] justify-self-center rounded-3xl bg-black-1 py-2 text-center text-sm italic text-bright-blue-2">
-        BUTTON TEXT
-      </button>
+      <Button text="BUTTON TEXT" italic={true} size={"medium"} />
     </div>
   );
 };
