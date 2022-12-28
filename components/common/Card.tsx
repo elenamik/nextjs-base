@@ -14,7 +14,7 @@ const Card: React.FC<{ data: CardData; variant?: CardVariant }> = ({
   };
 
   return (
-    <div className="p-8">
+    <div className="p-8" data-testid={`card-${variant}`}>
       <h1 className="pb-12 text-left italic">{data.subtitle}</h1>
       <div className={widths[variant] + " h-[252px] bg-grey-1 p-6"}>
         {data.content}

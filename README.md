@@ -18,3 +18,6 @@ You can start editing the page by modifying `pages/index.tsx`. The page auto-upd
 - Project deployed at [https://financial-dashboard-e9c1.vercel.app/](https://financial-dashboard-e9c1.vercel.app/)
 - Card Grid can be accessed at `/`
 - SS Card can be accessed at `/ss-card`
+
+## Testing
+- tests can be run with `yarn test`
