@@ -2,8 +2,10 @@ import Head from "next/head";
 import CardGrid from "components/CardGrid";
 import { cardData3, cardData7, cardData9 } from "constants/mock/cards";
 import SocialSecurityCard from "components/SocialSecurityCard";
+import { useState } from "react";
 
 export default function Home() {
+  const [userId, setUserId] = useState(1);
   // const [input, setInput] = useState(3);
   // const [cards, setCards] = useState(cardData3);
   //
@@ -56,9 +58,21 @@ export default function Home() {
         <h1 className="px-10 pt-10 text-left">9 Cards</h1>
         <CardGrid data={cardData9} />
 
-        <h1 className="px-10 pt-10 text-left">Social Security Card</h1>
+        <div className="m-2 flex">
+          <h1 className="px-10 pt-1 text-center">Social Security Card</h1>
+          <input
+            className="w-32 px-4"
+            type="number"
+            onChange={(e) => {
+              // @ts-ignore
+              setUserId(e.target.value);
+            }}
+            value={userId}
+          />
+        </div>
+
         <div className="mx-10 w-fit border-2">
-          <SocialSecurityCard />
+          <SocialSecurityCard userId={userId} />
         </div>
       </main>
     </>
