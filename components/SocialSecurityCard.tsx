@@ -41,17 +41,13 @@ const SocialSecurityCard: React.FC<{}> = () => {
       <div className="flex justify-around">
         <NumberSelector
           text="Your ideal retire age"
-          value={65}
-          placeholder="65"
-          handleChange={() => {}}
+          value="65"
           canEdit={true}
         />
         <NumberSelector
           text="Annual Social Security Payment"
-          placeholder="$18,000"
           canEdit={false}
-          value={18000}
-          handleChange={() => {}}
+          value="$18,000"
         />
       </div>
       <div className="flex justify-around">
