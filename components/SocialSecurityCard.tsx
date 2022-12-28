@@ -8,10 +8,7 @@ const SocialSecurityCard: React.FC<{}> = () => {
   const Graphs = () => {
     return (
       <div className="flex justify-center">
-        <div className="h-44 object-scale-down">
-          <Image src="/graphs/graph2.png" alt="graph" width={147} height={44} />
-        </div>
-        <Image src="/graphs/graph1.png" alt="graph" width={229} height={204} />
+        <Image src="/graphs/graph1.png" alt="graph" width={400} height={204} />
       </div>
     );
   };
