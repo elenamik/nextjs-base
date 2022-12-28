@@ -1,5 +1,5 @@
 import React from "react";
-import { CardData } from "types/Cards";
+import { CardData } from "types/card";
 
 export type CardVariant = "small" | "medium" | "large";
 
