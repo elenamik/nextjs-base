@@ -1,7 +1,7 @@
 import React from "react";
 import { CardData } from "types/Cards";
-import Card, { CardVariant } from "components/Card";
-import Button from "./Button";
+import Card, { CardVariant } from "components/common/Card";
+import Button from "components/common/Button";
 
 const CardGrid: React.FC<{ data: CardData[] }> = ({ data }) => {
   const chooseVariant = (arrayLength: number, index: number): CardVariant => {

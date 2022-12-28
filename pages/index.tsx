@@ -1,7 +1,7 @@
 import Head from "next/head";
 import CardGrid from "components/CardGrid";
 import { cardData3, cardData7, cardData9 } from "constants/mock/cards";
-import SocialSecurityCard from "../components/SocialSecurityCard";
+import SocialSecurityCard from "components/SocialSecurityCard";
 
 export default function Home() {
   // const [input, setInput] = useState(3);
