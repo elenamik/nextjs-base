@@ -3,6 +3,7 @@ import { useState } from "react";
 
 export default function SSCard() {
   const [userId, setUserId] = useState(1);
+  const graphUrl = "/graphs/graph1.png";
 
   return (
     <>
@@ -21,7 +22,7 @@ export default function SSCard() {
           value={userId}
         />
       </div>
-      <SocialSecurityCard userId={userId} />
+      <SocialSecurityCard userId={userId} graphUrl={graphUrl} />
     </>
   );
 }
