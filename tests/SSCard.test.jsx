@@ -43,5 +43,7 @@ describe("SocialSecurityCard", () => {
     fireEvent.click(screen.getByText("Choose..."));
     fireEvent.click(await screen.findByText("Michael Hamilton"));
     screen.findByText("Michael Hamilton");
+
+    // TODO: test for other text on screen
   });
 });

@@ -2,7 +2,7 @@ import SocialSecurityCard from "components/SocialSecurityCard";
 import { useState } from "react";
 
 export default function SSCard() {
-  const [userId, setUserId] = useState(1);
+  const [userId, setUserId] = useState<number | undefined>(1);
   const graphUrl = "/graphs/graph1.png";
 
   return (
@@ -15,6 +15,9 @@ export default function SSCard() {
           type="number"
           onChange={(e) => {
             const val = e.target.value as unknown as number;
+            if (val === "") {
+              setUserId(undefined);
+            }
             if (val > 0) {
               setUserId(val);
             }
@@ -22,7 +25,7 @@ export default function SSCard() {
           value={userId}
         />
       </div>
-      <SocialSecurityCard userId={userId} graphUrl={graphUrl} />
+      {userId && <SocialSecurityCard userId={userId} graphUrl={graphUrl} />}
     </>
   );
 }

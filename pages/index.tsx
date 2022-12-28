@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { CardData } from "types/card";
 
 export default function Home() {
-  const [input, setInput] = useState(3);
+  const [input, setInput] = useState<number | undefined>(3);
   const [cards, setCards] = useState<CardData[]>([]);
 
   useEffect(() => {
@@ -26,6 +26,9 @@ export default function Home() {
           type="number"
           onChange={(e) => {
             const val = e.target.value as unknown as number;
+            if (val === "") {
+              setInput(undefined);
+            }
             if (val > 0) {
               setInput(val);
             }
@@ -33,9 +36,11 @@ export default function Home() {
           value={input}
         />
       </div>
-      <div className="flex justify-center">
-        <CardGrid data={cards} />
-      </div>
+      {input && (
+        <div className="flex justify-center">
+          <CardGrid data={cards} />
+        </div>
+      )}
     </div>
   );
 }
