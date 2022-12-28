@@ -7,8 +7,7 @@ import { useQuery } from "react-query";
 import { Spin } from "antd";
 import { UserResponse } from "types/user";
 
-const SocialSecurityCard: React.FC<{}> = () => {
-  const userId = 1;
+const SocialSecurityCard: React.FC<{ userId: number }> = ({ userId }) => {
   const FETCH_USER_URL = "/api/users";
 
   const getUser = async (id: number) => {
@@ -18,8 +17,9 @@ const SocialSecurityCard: React.FC<{}> = () => {
     return response.json();
   };
 
-  const { data, error, isLoading } = useQuery<UserResponse>("user:", () =>
-    getUser(userId)
+  const { data, error, isLoading } = useQuery<UserResponse>(
+    `user:${userId}`,
+    () => getUser(userId)
   );
 
   console.log(data);
@@ -36,7 +36,7 @@ const SocialSecurityCard: React.FC<{}> = () => {
     return <div className="my-2 h-[1px] bg-grey-1"></div>;
   };
 
-  if (error) {
+  if (error || (!isLoading && !data?.user_info?.full_name)) {
     console.log("API ERROR", error);
     return (
       <div className="flex w-[420px] flex-col justify-center p-4 pb-6">
