@@ -6,13 +6,16 @@ import OptionSelector from "components/common/OptionSelector";
 import { Spin } from "antd";
 import useUser from "hooks/useUser";
 
-const SocialSecurityCard: React.FC<{ userId: number }> = ({ userId }) => {
+const SocialSecurityCard: React.FC<{ userId: number; graphUrl: string }> = ({
+  userId,
+  graphUrl,
+}) => {
   const { data, error, isLoading } = useUser(userId);
 
-  const Graphs = () => {
+  const Graph = () => {
     return (
       <div className="flex justify-center">
-        <Image src="/graphs/graph1.png" alt="graph" width={400} height={204} />
+        <Image src={graphUrl} alt="graph" width={400} height={204} />
       </div>
     );
   };
@@ -50,7 +53,7 @@ const SocialSecurityCard: React.FC<{ userId: number }> = ({ userId }) => {
       </h1>
       <h3 className="text-center">Our Recommendation</h3>
       <div className="p-4">
-        <Graphs />
+        <Graph />
       </div>
       <Divider />
       <div className="flex justify-center pb-6">

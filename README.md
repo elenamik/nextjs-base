@@ -15,5 +15,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
 ## Project files
-- Card Grid can be accessed at [http://localhost:3000](http://localhost:3000)
-- SS Card can be access at [http://localhost:3000/ss-card](http://localhost:3000/ss-card)
+- Project deployed at [https://financial-dashboard-e9c1.vercel.app/](https://financial-dashboard-e9c1.vercel.app/)
+- Card Grid can be accessed at `/`
+- SS Card can be accessed at `/ss-card`
+
+## Testing
+- tests can be run with `yarn test`
