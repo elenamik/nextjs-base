@@ -1,5 +1,5 @@
 import React from "react";
-import { CardData } from "types/Cards";
+import { CardData } from "types/card";
 import Card, { CardVariant } from "components/common/Card";
 import Button from "components/common/Button";
 

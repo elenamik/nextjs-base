@@ -3,8 +3,27 @@ import Image from "next/image";
 import Button from "components/common/Button";
 import NumberSelector from "components/common/NumberSelector";
 import OptionSelector from "components/common/OptionSelector";
+import { useQuery } from "react-query";
+import { Spin } from "antd";
+import { UserResponse } from "types/user";
 
-const SocialSecurityCard: React.FC<{}> = () => {
+const SocialSecurityCard: React.FC<{ userId: number }> = ({ userId }) => {
+  const FETCH_USER_URL = "/api/users";
+
+  const getUser = async (id: number) => {
+    const response = await fetch(`${FETCH_USER_URL}/${id}`, {
+      headers: { "Access-Control-Allow-Origin": "*" },
+    });
+    return response.json();
+  };
+
+  const { data, error, isLoading } = useQuery<UserResponse>(
+    `user:${userId}`,
+    () => getUser(userId)
+  );
+
+  console.log(data);
+
   const Graphs = () => {
     return (
       <div className="flex justify-center">
@@ -17,6 +36,23 @@ const SocialSecurityCard: React.FC<{}> = () => {
     return <div className="my-2 h-[1px] bg-grey-1"></div>;
   };
 
+  if (error || (!isLoading && !data?.user_info?.full_name)) {
+    console.log("API ERROR", error);
+    return (
+      <div className="flex w-[420px] flex-col justify-center p-4 pb-6">
+        <h1 className="text-sxl text-center font-bold drop-shadow-lg ">
+          Could not load API
+        </h1>
+      </div>
+    );
+  }
+  if (isLoading) {
+    return (
+      <div className="flex h-[200px] w-[420px] items-center justify-center">
+        <Spin />
+      </div>
+    );
+  }
   return (
     <div className="flex w-[420px] flex-col justify-center p-4 pb-6">
       <h1 className="text-sxl text-center font-bold drop-shadow-lg ">
@@ -29,7 +65,7 @@ const SocialSecurityCard: React.FC<{}> = () => {
       <Divider />
       <div className="flex justify-center pb-6">
         <OptionSelector
-          options={["Lena", "Craig"]}
+          options={[data!.user_info?.full_name ?? ""]}
           onChange={() => {}}
           placeholder="Choose..."
           id="member"
