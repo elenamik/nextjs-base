@@ -3,26 +3,11 @@ import Image from "next/image";
 import Button from "components/common/Button";
 import NumberSelector from "components/common/NumberSelector";
 import OptionSelector from "components/common/OptionSelector";
-import { useQuery } from "react-query";
 import { Spin } from "antd";
-import { UserResponse } from "types/user";
+import useUser from "hooks/useUser";
 
 const SocialSecurityCard: React.FC<{ userId: number }> = ({ userId }) => {
-  const FETCH_USER_URL = "/api/users";
-
-  const getUser = async (id: number) => {
-    const response = await fetch(`${FETCH_USER_URL}/${id}`, {
-      headers: { "Access-Control-Allow-Origin": "*" },
-    });
-    return response.json();
-  };
-
-  const { data, error, isLoading } = useQuery<UserResponse>(
-    `user:${userId}`,
-    () => getUser(userId)
-  );
-
-  console.log(data);
+  const { data, error, isLoading } = useUser(userId);
 
   const Graphs = () => {
     return (
