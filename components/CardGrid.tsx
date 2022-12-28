@@ -12,14 +12,15 @@ const CardGrid: React.FC<{ data: CardData[] }> = ({ data }) => {
       return options[index % 3] as CardVariant;
     }
   };
+
   return (
-    <div className="m-10 grid w-fit justify-items-center border-2 pb-4">
+    <div className="m-10  min-w-[300px] max-w-[1600px] border-2 pb-4">
       <div className="h-2 w-full bg-bright-blue-1" />
-      <h1 className="justify-self-start px-8 pt-8 text-xl font-bold italic">
-        HEADER
-      </h1>
-      <div className="justify-center">
-        <div className="flex w-fit flex-wrap justify-start">
+      <div className="flex flex-col items-center">
+        <h1 className="self-start px-8 pt-8 text-xl font-bold italic">
+          HEADER
+        </h1>
+        <div className="flex flex-wrap justify-center">
           {data.map((card: CardData, index: number) => (
             <Card
               key={card.subtitle}
@@ -28,8 +29,8 @@ const CardGrid: React.FC<{ data: CardData[] }> = ({ data }) => {
             />
           ))}
         </div>
+        <Button text="BUTTON TEXT" italic={true} size={"medium"} />
       </div>
-      <Button text="BUTTON TEXT" italic={true} size={"medium"} />
     </div>
   );
 };

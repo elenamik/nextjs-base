@@ -3,26 +3,11 @@ import Image from "next/image";
 import Button from "components/common/Button";
 import NumberSelector from "components/common/NumberSelector";
 import OptionSelector from "components/common/OptionSelector";
-import { useQuery } from "react-query";
 import { Spin } from "antd";
-import { UserResponse } from "types/user";
+import useUser from "hooks/useUser";
 
 const SocialSecurityCard: React.FC<{ userId: number }> = ({ userId }) => {
-  const FETCH_USER_URL = "/api/users";
-
-  const getUser = async (id: number) => {
-    const response = await fetch(`${FETCH_USER_URL}/${id}`, {
-      headers: { "Access-Control-Allow-Origin": "*" },
-    });
-    return response.json();
-  };
-
-  const { data, error, isLoading } = useQuery<UserResponse>(
-    `user:${userId}`,
-    () => getUser(userId)
-  );
-
-  console.log(data);
+  const { data, error, isLoading } = useUser(userId);
 
   const Graphs = () => {
     return (
@@ -36,19 +21,28 @@ const SocialSecurityCard: React.FC<{ userId: number }> = ({ userId }) => {
     return <div className="my-2 h-[1px] bg-grey-1"></div>;
   };
 
-  if (error || (!isLoading && !data?.user_info?.full_name)) {
+  const hasData =
+    data?.user_info?.full_name && data?.assumptions?.retirement_age;
+
+  if (error || (!isLoading && !hasData)) {
     console.log("API ERROR", error);
     return (
       <div className="flex w-[420px] flex-col justify-center p-4 pb-6">
         <h1 className="text-sxl text-center font-bold drop-shadow-lg ">
-          Could not load API
+          Could not load data
         </h1>
       </div>
     );
   }
   if (isLoading) {
-    return <Spin />;
+    return (
+      <div className="flex h-[200px] w-[420px] items-center justify-center">
+        <Spin />
+      </div>
+    );
   }
+
+  const retirementAge = data!.assumptions.retirement_age;
   return (
     <div className="flex w-[420px] flex-col justify-center p-4 pb-6">
       <h1 className="text-sxl text-center font-bold drop-shadow-lg ">
@@ -70,7 +64,7 @@ const SocialSecurityCard: React.FC<{ userId: number }> = ({ userId }) => {
       <div className="flex justify-around">
         <NumberSelector
           text="Your ideal retire age"
-          value="65"
+          value={retirementAge}
           canEdit={true}
         />
         <NumberSelector
@@ -80,7 +74,10 @@ const SocialSecurityCard: React.FC<{ userId: number }> = ({ userId }) => {
         />
       </div>
       <div className="flex justify-around">
-        <Button text="Use ideal 63" variant="secondary"></Button>
+        <Button
+          text={`Use ideal ${retirementAge}`}
+          variant="secondary"
+        ></Button>
         <Button text="Accept 70" variant="primary"></Button>
       </div>
     </div>
