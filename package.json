@@ -12,10 +12,6 @@
     "@next/font": "13.1.1",
     "next": "13.1.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "4.9.4",
-    "lint": "next lint",
-    "test": "jest",
     "@ant-design/icons": "^4.8.0",
     "antd": "^5.1.1",
     "react-query": "^3.39.2"
