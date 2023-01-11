@@ -20,7 +20,8 @@
     "prettier",
     "@typescript-eslint",
     "react",
-    "tailwindcss"
+    "tailwindcss",
+    "jest"
   ],
   "rules": {
     "react/prop-types": "off",
