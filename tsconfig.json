@@ -1,9 +1,6 @@
 {
   "compilerOptions": {
-<<<<<<< HEAD
-=======
     "baseUrl": ".",
->>>>>>> 7078d24c746cb1b4c621a7d8acc4f8e1bab20138
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -17,11 +14,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-<<<<<<< HEAD
     "incremental": true
-=======
-    "incremental": true,
->>>>>>> 7078d24c746cb1b4c621a7d8acc4f8e1bab20138
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
